@@ -1,0 +1,49 @@
+/* ============================================
+   Lucide Icons - Inline SVG
+   ============================================ */
+
+.ado-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.ado-mermaid-toolbar .ado-btn .ado-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.ado-modal-toolbar .ado-btn .ado-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.ado-source-view-btn .ado-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 6px;
+}
+
+@media (max-width: 600px) {
+  .ado-mermaid-toolbar .ado-btn .ado-icon,
+  .ado-modal-toolbar .ado-btn .ado-icon {
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
+
+@media (forced-colors: active) {
+  .ado-icon {
+    stroke: CanvasText;
+  }
+  .ado-btn:hover .ado-icon,
+  .ado-btn:focus .ado-icon {
+    stroke: HighlightText;
+  }
+}
