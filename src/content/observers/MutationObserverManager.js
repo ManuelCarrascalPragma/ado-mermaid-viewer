@@ -1,5 +1,5 @@
 import { scanForDiagrams } from '../scanner/DiagramScanner.js';
-import { EXACT_SVG_SELECTORS, SOURCE_SELECTORS } from '../shared/constants.js';
+import { EXACT_SVG_SELECTORS, SOURCE_SELECTORS } from '../../shared/constants.js';
 
 export class MutationObserverManager {
   constructor() {

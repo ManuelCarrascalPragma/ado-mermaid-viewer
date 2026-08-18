@@ -1,4 +1,4 @@
-import { EXACT_SVG_SELECTORS, SOURCE_SELECTORS, CONTAINER_SELECTORS, MERMAID_PATTERNS } from '../shared/constants.js';
+import { EXACT_SVG_SELECTORS, SOURCE_SELECTORS, CONTAINER_SELECTORS, MERMAID_PATTERNS } from '../../shared/constants.js';
 import { isMermaidCode, extractMermaidCode } from '../utils/html.js';
 import { getTextNodes } from '../utils/dom.js';
 import { addDiagramViewer } from '../ui/Toolbar.js';

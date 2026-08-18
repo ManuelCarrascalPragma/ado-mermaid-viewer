@@ -3,7 +3,7 @@ const ENTITY_MAP = {
   '>': '>',
   '&': '&',
   '"': '"',
-  "'": '''
+  "'": "'"
 };
 
 const REVERSE_ENTITY_MAP = Object.fromEntries(
@@ -30,4 +30,13 @@ export function extractMermaidCode(text) {
     .replace(/&/g, '&')
     .replace(/"/g, '"')
     .replace(/'/g, "'");
+}
+
+export function isMermaidCode(text) {
+  if (!text) return false;
+  const patterns = [
+    /^\s*(graph|flowchart|sequenceDiagram|classDiagram|stateDiagram|pie|gantt|gitgraph|journey|timeline|mindmap|quadrantChart|requirement|erDiagram|C4Context|C4Container|C4Component|C4Dynamic|block-beta)/i,
+    /^\s*```mermaid/i
+  ];
+  return patterns.some(p => p.test(text));
 }
