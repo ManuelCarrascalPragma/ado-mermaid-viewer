@@ -1,0 +1,50 @@
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ado-modal-content {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 0;
+  }
+
+  .ado-mermaid-toolbar {
+    top: 4px;
+    right: 4px;
+    padding: 3px;
+  }
+
+  .ado-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .ado-source-view-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .ado-mermaid-toolbar,
+  .ado-source-view-btn,
+  .ado-mermaid-modal {
+    display: none !important;
+  }
+
+  .ado-modal-svg-wrapper svg {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}

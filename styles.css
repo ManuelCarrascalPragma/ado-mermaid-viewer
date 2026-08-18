@@ -1,0 +1,399 @@
+/* ============================================
+   Azure DevOps Mermaid Viewer - Styles
+   Dark/Light mode aware | Minimal & Clean
+   ============================================ */
+
+/* CSS Custom Properties for theme adaptation */
+:root {
+  --ado-bg: #ffffff;
+  --ado-text: #1a1a1a;
+  --ado-border: #d1d1d1;
+  --ado-toolbar-bg: rgba(255, 255, 255, 0.95);
+  --ado-toolbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --ado-btn-bg: #f3f2f1;
+  --ado-btn-hover: #e1dfdd;
+  --ado-btn-active: #d2d0ce;
+  --ado-btn-text: #323130;
+  --ado-primary-bg: #0078d4;
+  --ado-primary-hover: #106ebe;
+  --ado-primary-text: #ffffff;
+  --ado-modal-backdrop: rgba(0, 0, 0, 0.6);
+  --ado-modal-bg: #ffffff;
+  --ado-modal-header-bg: #faf9f8;
+  --ado-modal-border: #e1dfdd;
+  --ado-scrollbar-thumb: #a19f9d;
+  --ado-scrollbar-track: #f3f2f1;
+}
+
+/* Dark mode - detects ADO theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ado-bg: #1b1a19;
+    --ado-text: #faf9f8;
+    --ado-border: #484644;
+    --ado-toolbar-bg: rgba(27, 26, 25, 0.95);
+    --ado-toolbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --ado-btn-bg: #3b3a39;
+    --ado-btn-hover: #484644;
+    --ado-btn-active: #565452;
+    --ado-btn-text: #faf9f8;
+    --ado-primary-bg: #0078d4;
+    --ado-primary-hover: #3a9cff;
+    --ado-modal-backdrop: rgba(0, 0, 0, 0.8);
+    --ado-modal-bg: #1b1a19;
+    --ado-modal-header-bg: #252423;
+    --ado-modal-border: #3b3a39;
+    --ado-scrollbar-thumb: #6d6b69;
+    --ado-scrollbar-track: #252423;
+  }
+}
+
+/* Also respect explicit ADO theme classes */
+body.theme-dark,
+body.dark,
+.vscode-dark {
+  --ado-bg: #1b1a19;
+  --ado-text: #faf9f8;
+  --ado-border: #484644;
+  --ado-toolbar-bg: rgba(27, 26, 25, 0.95);
+  --ado-toolbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --ado-btn-bg: #3b3a39;
+  --ado-btn-hover: #484644;
+  --ado-btn-active: #565452;
+  --ado-btn-text: #faf9f8;
+  --ado-modal-backdrop: rgba(0, 0, 0, 0.8);
+  --ado-modal-bg: #1b1a19;
+  --ado-modal-header-bg: #252423;
+  --ado-modal-border: #3b3a39;
+  --ado-scrollbar-thumb: #6d6b69;
+  --ado-scrollbar-track: #252423;
+}
+
+/* ============================================
+   TOOLBAR (injected on diagram containers)
+   ============================================ */
+.ado-mermaid-toolbar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--ado-toolbar-bg);
+  border-radius: 6px;
+  box-shadow: var(--ado-toolbar-shadow);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--ado-border);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: auto;
+}
+
+/* Show toolbar on container hover */
+.ado-mermaid-toolbar:hover,
+.ado-mermaid-toolbar:focus-within,
+div[style*="relative"]:hover .ado-mermaid-toolbar,
+.mermaid:hover .ado-mermaid-toolbar,
+.internal-content-host:hover .ado-mermaid-toolbar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ado-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ado-btn-text);
+  background: var(--ado-btn-bg);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s, transform 0.05s;
+  user-select: none;
+}
+
+.ado-btn:hover {
+  background: var(--ado-btn-hover);
+}
+
+.ado-btn:active {
+  background: var(--ado-btn-active);
+  transform: scale(0.95);
+}
+
+.ado-btn:focus-visible {
+  outline: 2px solid var(--ado-primary-bg);
+  outline-offset: 2px;
+}
+
+.ado-btn-primary {
+  background: var(--ado-primary-bg);
+  color: var(--ado-primary-text);
+  border-color: var(--ado-primary-bg);
+}
+
+.ado-btn-primary:hover {
+  background: var(--ado-primary-hover);
+  border-color: var(--ado-primary-hover);
+}
+
+/* Fullscreen button distinct style */
+.ado-btn-fullscreen {
+  font-size: 16px;
+}
+
+/* Source view button (on code blocks) */
+.ado-source-view-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ado-primary-text);
+  background: var(--ado-primary-bg);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.15s, transform 0.1s;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.ado-source-view-btn:hover {
+  background: var(--ado-primary-hover);
+  transform: scale(1.05);
+}
+
+.ado-source-view-btn:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   FULLSCREEN MODAL
+   ============================================ */
+.ado-mermaid-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2147483647; /* Max z-index */
+}
+
+.ado-mermaid-modal[style*="flex"] {
+  display: flex;
+}
+
+.ado-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--ado-modal-backdrop);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ado-modal-content {
+  position: relative;
+  width: 95vw;
+  max-width: 1400px;
+  height: 90vh;
+  max-height: 900px;
+  min-width: 600px;
+  min-height: 400px;
+  background: var(--ado-modal-bg);
+  border: 1px solid var(--ado-modal-border);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ado-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--ado-modal-header-bg);
+  border-bottom: 1px solid var(--ado-modal-border);
+  flex-shrink: 0;
+}
+
+.ado-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ado-text);
+}
+
+.ado-modal-toolbar {
+  display: flex;
+  gap: 4px;
+}
+
+.ado-modal-body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--ado-bg);
+}
+
+.ado-modal-svg-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure SVG in modal fills wrapper */
+.ado-modal-svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease-out;
+  cursor: grab;
+}
+
+.ado-modal-svg-wrapper svg:active {
+  cursor: grabbing;
+}
+
+/* ============================================
+   SCROLLBARS (for modal body if needed)
+   ============================================ */
+.ado-modal-body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ado-modal-body::-webkit-scrollbar-track {
+  background: var(--ado-scrollbar-track);
+}
+
+.ado-modal-body::-webkit-scrollbar-thumb {
+  background: var(--ado-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.ado-modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--ado-border);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .ado-modal-content {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 0;
+  }
+
+  .ado-mermaid-toolbar {
+    top: 4px;
+    right: 4px;
+    padding: 3px;
+  }
+
+  .ado-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .ado-source-view-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================ */
+@media (forced-colors: active) {
+  .ado-mermaid-toolbar,
+  .ado-modal-content {
+    border: 1px solid CanvasText;
+  }
+
+  .ado-btn {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .ado-btn:hover,
+  .ado-btn:focus {
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .ado-btn-primary {
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .ado-source-view-btn {
+    background: Highlight;
+    color: HighlightText;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .ado-mermaid-toolbar,
+  .ado-btn,
+  .ado-source-view-btn,
+  .ado-modal-content,
+  .ado-modal-backdrop,
+  .ado-modal-svg-wrapper svg {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .ado-mermaid-toolbar,
+  .ado-source-view-btn,
+  .ado-mermaid-modal {
+    display: none !important;
+  }
+
+  .ado-modal-svg-wrapper svg {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}

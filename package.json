@@ -1,0 +1,21 @@
+{
+  "name": "ado-mermaid-viewer",
+  "version": "1.0.0",
+  "description": "Enhanced Mermaid diagram viewer for Azure DevOps Wiki, Boards and Pull Requests",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.config.js --watch",
+    "build": "node esbuild.config.js --minify",
+    "lint": "eslint src/",
+    "format": "prettier --write \"src/**/*.js\" \"styles/**/*.css\"",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "vitest": "^2.0.5"
+  }
+}

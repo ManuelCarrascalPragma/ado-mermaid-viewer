@@ -1,0 +1,31 @@
+/* ============================================
+   Toolbar (injected on diagram containers)
+   ============================================ */
+
+.ado-mermaid-toolbar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--ado-toolbar-bg);
+  border-radius: var(--ado-radius-md);
+  box-shadow: var(--ado-toolbar-shadow);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--ado-border);
+  z-index: var(--ado-z-index-toolbar);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--ado-transition-normal) ease, transform var(--ado-transition-normal) ease;
+  pointer-events: auto;
+}
+
+.ado-mermaid-toolbar:hover,
+.ado-mermaid-toolbar:focus-within,
+div[style*="relative"]:hover .ado-mermaid-toolbar,
+.mermaid:hover .ado-mermaid-toolbar,
+.internal-content-host:hover .ado-mermaid-toolbar {
+  opacity: 1;
+  transform: translateY(0);
+}

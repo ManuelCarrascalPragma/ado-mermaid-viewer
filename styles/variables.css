@@ -1,0 +1,105 @@
+/* ============================================
+   Design Tokens - CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* Light theme (default) */
+  --ado-bg: #ffffff;
+  --ado-text: #1a1a1a;
+  --ado-border: #d1d1d1;
+  --ado-toolbar-bg: rgba(255, 255, 255, 0.95);
+  --ado-toolbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --ado-btn-bg: #f3f2f1;
+  --ado-btn-hover: #e1dfdd;
+  --ado-btn-active: #d2d0ce;
+  --ado-btn-text: #323130;
+  --ado-primary-bg: #0078d4;
+  --ado-primary-hover: #106ebe;
+  --ado-primary-text: #ffffff;
+  --ado-modal-backdrop: rgba(0, 0, 0, 0.6);
+  --ado-modal-bg: #ffffff;
+  --ado-modal-header-bg: #faf9f8;
+  --ado-modal-border: #e1dfdd;
+  --ado-scrollbar-thumb: #a19f9d;
+  --ado-scrollbar-track: #f3f2f1;
+  --ado-focus-ring: 2px solid var(--ado-primary-bg);
+  --ado-focus-offset: 2px;
+  --ado-transition-fast: 0.1s;
+  --ado-transition-normal: 0.15s;
+  --ado-transition-slow: 0.2s;
+  --ado-radius-sm: 4px;
+  --ado-radius-md: 6px;
+  --ado-radius-lg: 12px;
+  --ado-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --ado-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --ado-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --ado-z-index-toolbar: 100;
+  --ado-z-index-modal: 2147483647;
+}
+
+/* Dark mode - prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ado-bg: #1b1a19;
+    --ado-text: #faf9f8;
+    --ado-border: #484644;
+    --ado-toolbar-bg: rgba(27, 26, 25, 0.95);
+    --ado-toolbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --ado-btn-bg: #3b3a39;
+    --ado-btn-hover: #484644;
+    --ado-btn-active: #565452;
+    --ado-btn-text: #faf9f8;
+    --ado-primary-bg: #0078d4;
+    --ado-primary-hover: #3a9cff;
+    --ado-modal-backdrop: rgba(0, 0, 0, 0.8);
+    --ado-modal-bg: #1b1a19;
+    --ado-modal-header-bg: #252423;
+    --ado-modal-border: #3b3a39;
+    --ado-scrollbar-thumb: #6d6b69;
+    --ado-scrollbar-track: #252423;
+  }
+}
+
+/* Explicit ADO theme classes */
+body.theme-dark,
+body.dark,
+.vscode-dark {
+  --ado-bg: #1b1a19;
+  --ado-text: #faf9f8;
+  --ado-border: #484644;
+  --ado-toolbar-bg: rgba(27, 26, 25, 0.95);
+  --ado-toolbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --ado-btn-bg: #3b3a39;
+  --ado-btn-hover: #484644;
+  --ado-btn-active: #565452;
+  --ado-btn-text: #faf9f8;
+  --ado-primary-bg: #0078d4;
+  --ado-primary-hover: #3a9cff;
+  --ado-modal-backdrop: rgba(0, 0, 0, 0.8);
+  --ado-modal-bg: #1b1a19;
+  --ado-modal-header-bg: #252423;
+  --ado-modal-border: #3b3a39;
+  --ado-scrollbar-thumb: #6d6b69;
+  --ado-scrollbar-track: #252423;
+}
+
+/* High contrast mode */
+@media (forced-colors: active) {
+  :root {
+    --ado-border: CanvasText;
+    --ado-btn-bg: Canvas;
+    --ado-btn-text: CanvasText;
+    --ado-primary-bg: Highlight;
+    --ado-primary-text: HighlightText;
+    --ado-modal-border: CanvasText;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ado-transition-fast: 0;
+    --ado-transition-normal: 0;
+    --ado-transition-slow: 0;
+  }
+}

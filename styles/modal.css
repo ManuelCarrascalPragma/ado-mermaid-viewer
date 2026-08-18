@@ -1,0 +1,121 @@
+/* ============================================
+   Fullscreen Modal
+   ============================================ */
+
+.ado-mermaid-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--ado-z-index-modal);
+}
+
+.ado-mermaid-modal[style*="flex"] {
+  display: flex;
+}
+
+.ado-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--ado-modal-backdrop);
+  backdrop-filter: blur(4px);
+  animation: fadeIn var(--ado-transition-normal) ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ado-modal-content {
+  position: relative;
+  width: 95vw;
+  max-width: 1400px;
+  height: 90vh;
+  max-height: 900px;
+  min-width: 600px;
+  min-height: 400px;
+  background: var(--ado-modal-bg);
+  border: 1px solid var(--ado-modal-border);
+  border-radius: var(--ado-radius-lg);
+  box-shadow: var(--ado-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp var(--ado-transition-normal) ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ado-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--ado-modal-header-bg);
+  border-bottom: 1px solid var(--ado-modal-border);
+  flex-shrink: 0;
+}
+
+.ado-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ado-text);
+}
+
+.ado-modal-toolbar {
+  display: flex;
+  gap: 4px;
+}
+
+.ado-modal-body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--ado-bg);
+}
+
+.ado-modal-svg-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ado-modal-svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  transform-origin: 0 0;
+  transition: transform var(--ado-transition-fast) ease-out;
+  cursor: grab;
+}
+
+.ado-modal-svg-wrapper svg:active {
+  cursor: grabbing;
+}
+
+/* Scrollbars */
+.ado-modal-body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ado-modal-body::-webkit-scrollbar-track {
+  background: var(--ado-scrollbar-track);
+}
+
+.ado-modal-body::-webkit-scrollbar-thumb {
+  background: var(--ado-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.ado-modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--ado-border);
+}

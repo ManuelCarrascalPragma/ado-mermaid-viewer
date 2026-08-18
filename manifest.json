@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Azure DevOps Mermaid Viewer",
+  "version": "1.0.0",
+  "description": "Enhanced Mermaid diagram viewer for Azure DevOps Wiki, Boards and Pull Requests with zoom, pan and fullscreen",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["*://dev.azure.com/*", "*://*.visualstudio.com/*"],
+  "action": {
+    "default_title": "Azure DevOps Mermaid Viewer"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["*://dev.azure.com/*", "*://*.visualstudio.com/*"],
+    "js": ["content.js"],
+    "css": ["styles.css"],
+    "run_at": "document_idle"
+  }],
+  "web_accessible_resources": [{
+    "resources": ["lib/mermaid.min.js"],
+    "matches": ["*://dev.azure.com/*", "*://*.visualstudio.com/*"]
+  }]
+}
