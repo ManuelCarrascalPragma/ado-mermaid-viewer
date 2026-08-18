@@ -1,6 +1,7 @@
 import { createElement } from '../utils/dom.js';
 import { findDiagramContainer } from '../utils/dom.js';
 import { renderMermaid } from '../renderer/MermaidRenderer.js';
+import { createIcon, Search } from '../utils/icons.js';
 
 const processedElements = new WeakSet();
 
@@ -26,7 +27,9 @@ export class SourceViewButton {
     if (style.position === 'static') this.container.style.position = 'relative';
 
     this.button = createElement(`
-      <button class="ado-source-view-btn" title="Open diagram in fullscreen viewer">🔍 View Diagram</button>
+      <button class="ado-source-view-btn" title="Open diagram in fullscreen viewer">
+        ${createIcon(Search)} View Diagram
+      </button>
     `);
 
     this.button.addEventListener('mouseenter', () => this.button.style.transform = 'scale(1.05)');

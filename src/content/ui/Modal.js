@@ -1,8 +1,8 @@
 import { createElement } from '../utils/dom.js';
+import { createIcon, ZoomIn, ZoomOut, Home, Download, X } from '../utils/icons.js';
+import { PanZoom } from './PanZoom.js';
 
 let modalInstance = null;
-let modalPanZoom = null;
-let modalSvg = null;
 
 export class Modal {
   constructor() {
@@ -34,11 +34,11 @@ export class Modal {
           <header class="ado-modal-header">
             <h3>Mermaid Diagram</h3>
             <div class="ado-modal-toolbar">
-              <button class="ado-btn" data-action="zoom-in" aria-label="Zoom In">+</button>
-              <button class="ado-btn" data-action="zoom-out" aria-label="Zoom Out">−</button>
-              <button class="ado-btn" data-action="reset" aria-label="Reset">⌂</button>
-              <button class="ado-btn" data-action="download" aria-label="Download PNG">⬇</button>
-              <button class="ado-btn" data-action="close" aria-label="Close (Esc)">✕</button>
+              <button class="ado-btn" data-action="zoom-in" aria-label="Zoom In">${createIcon(ZoomIn)}</button>
+              <button class="ado-btn" data-action="zoom-out" aria-label="Zoom Out">${createIcon(ZoomOut)}</button>
+              <button class="ado-btn" data-action="reset" aria-label="Reset">${createIcon(Home)}</button>
+              <button class="ado-btn" data-action="download" aria-label="Download PNG">${createIcon(Download)}</button>
+              <button class="ado-btn" data-action="close" aria-label="Close (Esc)">${createIcon(X)}</button>
             </div>
           </header>
           <div class="ado-modal-body">
@@ -81,18 +81,26 @@ export class Modal {
     this.wrapper.innerHTML = '';
     this.modalSvg = svgElement.cloneNode(true);
     this.modalSvg.removeAttribute('style');
-    this.modalSvg.style.width = '100%';
-    this.modalSvg.style.height = '100%';
     this.wrapper.appendChild(this.modalSvg);
 
+    // Make modal visible FIRST so wrapper has dimensions
+    this.element.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
     await new Promise(r => requestAnimationFrame(r));
+
+    // Ensure viewBox is set on cloned SVG before PanZoom.fit()
+    if (!this.modalSvg.viewBox?.baseVal?.width) {
+      const bbox = this.modalSvg.getBBox();
+      if (bbox.width > 0 && bbox.height > 0) {
+        this.modalSvg.setAttribute('viewBox', `0 0 ${bbox.width} ${bbox.height}`);
+      }
+    }
 
     if (this.modalPanZoom) this.modalPanZoom.destroy();
     this.modalPanZoom = new PanZoom(this.modalSvg, { minScale: 0.05, maxScale: 20 });
     this.modalPanZoom.fit();
 
-    this.element.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
     this.element.focus();
   }
 
