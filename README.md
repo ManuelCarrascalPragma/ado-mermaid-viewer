@@ -23,7 +23,7 @@ Visor mejorado de diagramas Mermaid para Azure DevOps Wiki, Boards y Pull Reques
 
 ### Desde GitHub Releases (Recomendado)
 
-1. Ve a la [página de Releases]([https://github.com/manuelcarrascal/ado-mermaid-viewer/releases](https://github.com/ManuelCarrascalPragma/ado-mermaid-viewer/releases))
+1. Ve a la [página de Releases](https://github.com/manuelcarrascal/ado-mermaid-viewer/releases](https://github.com/ManuelCarrascalPragma/ado-mermaid-viewer/releases))
 2. Descarga el último archivo `ado-mermaid-viewer-vX.Y.Z.zip`
 3. Extrae el ZIP a una carpeta en tu computadora
 4. Abre Chrome y ve a `chrome://extensions/`
